@@ -27,8 +27,55 @@ public class ValidarContrasenas {
             return false;
         }
 
-        // Validar otros criterios según tus necesidades, por ejemplo, presencia de mayúsculas, minúsculas, números, etc.
-        // En este ejemplo, solo se verifica la longitud.
+        // Validar la presencia de al menos una letra mayúscula
+        if (!contieneMayuscula(contrasena)) {
+            System.out.println("La contraseña debe contener al menos una letra mayúscula.");
+            return false;
+        }
+
+        // Validar la presencia de al menos una letra minúscula
+        if (!contieneMinuscula(contrasena)) {
+            System.out.println("La contraseña debe contener al menos una letra minúscula.");
+            return false;
+        }
+
+        // Validar la presencia de al menos un número
+        if (!contieneNumero(contrasena)) {
+            System.out.println("La contraseña debe contener al menos un número.");
+            return false;
+        }
+
+        // Todos los criterios han sido cumplidos
         return true;
+    }
+
+    // Función para verificar la presencia de al menos una letra mayúscula
+    private static boolean contieneMayuscula(String contrasena) {
+        for (char c : contrasena.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Función para verificar la presencia de al menos una letra minúscula
+    private static boolean contieneMinuscula(String contrasena) {
+        for (char c : contrasena.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Función para verificar la presencia de al menos un número
+    private static boolean contieneNumero(String contrasena) {
+        for (char c : contrasena.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
